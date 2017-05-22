@@ -2,15 +2,18 @@
 
 
 //1
-function ImgClick(event) {
-  console.log("X: " + event.clientX + "    Y: " + event.clientY);
-  console.log(event.target.src);
+function imgClick(event) {
+    var X = event.clientX - this.getBoundingClientRect().left;
+    var Y = event.clientY - this.getBoundingClientRect().top;
+
+    console.log("X: " + X + "    Y: " + Y);
+    console.log(event.target.src);
 }
 
-var Imgs = document.getElementsByTagName("img");
+var imgs = document.getElementsByTagName("img");
 
-for (var i = 0; i < Imgs.length; i++) {
-    Imgs[i].onclick = ImgClick;
+for (var i = 0; i < imgs.length; i++) {
+    imgs[i].onclick = imgClick;
 }
 
 // ---------------------------
@@ -18,34 +21,34 @@ for (var i = 0; i < Imgs.length; i++) {
 
 //2
 
-function NumKey(event) {
+function numkey(event) {
     console.log(String.fromCharCode(event.keyCode));
 }
 
-function KeyInfo(event) {
-  var DivInfo = document.createElement('div');
-  var Key     = document.createElement('h5');
-  var KeyNum  = document.createElement('p');
-  var Shift   = document.createElement('p');
+function keyInfo(event) {
+    var divInfo = document.createElement('div');
+    var key     = document.createElement('h5');
+    var keyNum  = document.createElement('p');
+    var shift   = document.createElement('p');
 
-  KeyNum.innerHTML  = "Key code : " + event.keyCode;
-  Key.innerHTML     = "Key : " + String.fromCharCode(event.keyCode);
-  Shift.innerHTML   = "shift key : " + event.shiftKey;
+    keyNum.innerHTML  = "key code : " + event.keyCode;
+    key.innerHTML     = "key : " + String.fromCharCode(event.keyCode);
+    shift.innerHTML   = "shift key : " + event.Shiftkey;
 
-  keyDownEventsInfoContainer.appendChild(DivInfo);
+    keyDownEventsInfoContainer.appendChild(divInfo);
 
-  DivInfo.appendChild(Key);
-  DivInfo.appendChild(KeyNum);
-  DivInfo.appendChild(Shift);
+    divInfo.appendChild(key);
+    divInfo.appendChild(keyNum);
+    divInfo.appendChild(shift);
 }
 
 
 
 
-window.addEventListener("keydown", NumKey);
-window.addEventListener("keydown", KeyInfo);
+window.addEventListener("keydown", numkey);
+window.addEventListener("keydown", keyInfo);
 
-//window.removeEventListener("keydown", NumKey);
-//window.removeEventListener("keydown", KeyInfo);
+//window.removeEventListener("keydown", numkey);
+//window.removeEventListener("keydown", keyInfo);
 
 // ---------------------------
